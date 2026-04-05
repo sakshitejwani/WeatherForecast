@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!--
+    This makes the page look correct on phones.
+    Without it, mobile browsers zoom out and everything looks tiny.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Forecast</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="card">
+
+    <h1 class="app-title">🌤 Weather App</h1>
+
+    <form id="search-form">
+
+      <input type="text" id="city-input" placeholder="Enter a city name..." />
+
+      <button type="submit">Search</button>
+
+    </form>
+
+    <div class="unit-toggle">
+      <button id="btn-c" class="unit-btn active">°C</button>
+      <button id="btn-f" class="unit-btn">°F</button>
+    </div>
+
+    <!-- Shown while the API request is loading -->
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Getting weather data...</p>
+    </div>
+
+    <!-- Shown if there's an error (e.g. city not found) -->
+    <div id="error" class="hidden">
+      <p id="error-message">Something went wrong.</p>
+    </div>
+
+    <!-- Shown on first visit before any search -->
+    <div id="empty">
+      <p class="hint">👆 Search for a city to see the weather</p>
+    </div>
+
+
+    <!-- ── WEATHER RESULT ──────────────────────────────────────
+      This section is hidden at first.
+      JavaScript fills it in and makes it visible after a search.
+    ─────────────────────────────────────────────────────────── -->
+    <div id="weather" class="hidden">
+
+      <h2 id="city-name">—</h2>
+
+      <p id="today-date">—</p>
+
+      <img id="weather-icon" src="" alt="Weather icon" />
+
+      <p id="temperature">—</p>
+
+      <p id="description">—</p>
+
+
+      <div class="stats">
+
+        <div class="stat-box">
+          <span class="stat-label">Humidity</span>
+          <span id="humidity" class="stat-value">—</span>
+        </div>
+
+        <div class="stat-box">
+          <span class="stat-label">Wind</span>
+          <span id="wind" class="stat-value">—</span>
+        </div>
+
+        <div class="stat-box">
+          <span class="stat-label">Feels like</span>
+          <span id="feels-like" class="stat-value">—</span>
+        </div>
+
+      </div>
+
+
+      <h3 class="forecast-title">5-Day Forecast</h3>
+      <div id="forecast">
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
